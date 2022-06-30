@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">SampleApp</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="prompt_name">Enter your name</string>
+    <string name="prompt_password">Password</string>
+    <string name="invalid_password">Password is in-correct</string>
+    <string name="action_sign_in">Login</string>
+    <string name="forgot_password">Forgot Password</string>
+    <string name="login">Login</string>
+    <string name="invalid_username">Username can\'t be empty</string>
+    <string name="not_implemented">Not implemented yet!</string>
+    <string name="welcome">Welcome!</string>
+    <string name="giffy_image">GIFFY Image</string>
+    <string name="logout">Logout</string>
+
+</resources>
