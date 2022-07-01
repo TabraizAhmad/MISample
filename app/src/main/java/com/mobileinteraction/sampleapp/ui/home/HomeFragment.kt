@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.View
 import androidx.fragment.app.viewModels
 import androidx.hilt.navigation.fragment.hiltNavGraphViewModels
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.bumptech.glide.Glide
 import com.mobileinteraction.sampleapp.R
@@ -30,18 +31,28 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         val user = args.loggedUser
         _binding?.apply {
             tvName.text = user.displayName
+            logoutBtn.setOnClickListener {
+                findNavController().navigateUp()
+            }
         }
-        viewModel.articleResponse?.observe(viewLifecycleOwner) { response->
+        viewModel.articleResponse?.observe(viewLifecycleOwner) { response ->
             when (response) {
-                is Resource.Error -> {}
-                is Resource.Loading -> {}
+                is Resource.Error -> {
+                    _binding?.progressBar?.visibility = View.GONE
+                }
+                is Resource.Loading -> {
+                    _binding?.progressBar?.visibility = View.VISIBLE
+                }
                 is Resource.Success -> {
-                    _binding?.imageView?.let { iView ->
-                        Glide.with(iView)
+                    _binding?.apply {
+                        progressBar.visibility = View.GONE
+                        Glide.with(imageView)
                             .asGif()
                             .load(response.result?.data?.images?.previewGif?.url)
                             .placeholder(R.drawable.ic_launcher_background)
-                            .into(iView)
+                            .into(imageView)
+                        authorName.text = response.result?.data?.username
+                        
                     }
                 }
             }
