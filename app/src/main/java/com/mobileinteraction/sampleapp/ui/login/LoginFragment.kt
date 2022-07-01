@@ -10,8 +10,10 @@ import androidx.navigation.fragment.findNavController
 import com.mobileinteraction.sampleapp.R
 import com.mobileinteraction.sampleapp.data.LoggedInUser
 import com.mobileinteraction.sampleapp.databinding.FragmentLoginBinding
+import dagger.hilt.android.AndroidEntryPoint
 import java.util.*
 
+@AndroidEntryPoint
 class LoginFragment : Fragment(R.layout.fragment_login) {
     private var _binding: FragmentLoginBinding? = null
 
